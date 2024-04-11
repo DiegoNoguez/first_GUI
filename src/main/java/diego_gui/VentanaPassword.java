@@ -23,6 +23,7 @@ public class VentanaPassword extends JFrame{
         lienzo();
         encabezados();
         cajones();
+        botones();
     }
     private void lienzo(){
         panel1=new JPanel();
@@ -66,7 +67,13 @@ public class VentanaPassword extends JFrame{
     private void botones(){
         botAcep=new JButton();
         botAcep.setText("ACEPTAR");
+        botAcep.setBounds(50,135,90,20);
+        panel1.add(botAcep);
         
+        botCan=new JButton();
+        botCan.setText("CANCELAR");
+        botCan.setBounds(150,135,100,20);
+        panel1.add(botCan);
     }
     public static void main(String[]args){
         VentanaPassword call = new VentanaPassword();
