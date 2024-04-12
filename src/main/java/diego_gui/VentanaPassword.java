@@ -10,11 +10,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 public class VentanaPassword extends JFrame{
     private JPanel panel1;
     private JLabel titulo,us,pas;
-    private JTextField cajonus,cajonPass;
+    private JTextField cajonus;
     private JButton botAcep, botCan;
+    private JPasswordField cajonPass;
     private String usuario="Diego",password="12345";
     public ActionListener accion,cancel;
     private JFrame ventana1,ventana2;
@@ -69,7 +71,7 @@ public class VentanaPassword extends JFrame{
         cajonus.setBounds(115,60,150,20);
         cajonus.setBackground(Color.WHITE);
         panel1.add(cajonus);
-        cajonPass=new JTextField();
+        cajonPass=new JPasswordField();
         cajonPass.setBounds(115,90,150,20);
         cajonPass.setBackground(Color.WHITE);
         panel1.add(cajonPass);
