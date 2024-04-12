@@ -15,7 +15,8 @@ public class VentanaPassword extends JFrame{
     private JLabel titulo,us,pas;
     private JTextField cajonus,cajonPass;
     private JButton botAcep, botCan;
-    private String usuario="Diego",cajon1,password="12345",pass;
+    private String usuario="Diego",password="12345";
+    private byte contador;
     public  VentanaPassword(){
         this.setVisible(true);
         this.setSize(310,220);
@@ -63,13 +64,10 @@ public class VentanaPassword extends JFrame{
         cajonus=new JTextField();
         cajonus.setBounds(115,60,150,20);
         cajonus.setBackground(Color.WHITE);
-        cajon1=cajonus.getText();
         panel1.add(cajonus);
-        
         cajonPass=new JTextField();
         cajonPass.setBounds(115,90,150,20);
         cajonPass.setBackground(Color.WHITE);
-        pass=cajonPass.getText();
         panel1.add(cajonPass);
     }
     private void botones(){
@@ -77,11 +75,12 @@ public class VentanaPassword extends JFrame{
         botAcep.setText("ACEPTAR");
         botAcep.setBounds(50,135,90,20);
         panel1.add(botAcep);
+        contador=0;
         //agregacion de eventos al boton
         ActionListener accion=new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cajon1==usuario &&pass==password){
+                if(usuario.equals(cajonus.getText())&&password.equals(cajonPass.getText())){
                     JOptionPane.showMessageDialog(null,"Iniciando Sesíon");
                 }else{
                     JOptionPane.showMessageDialog(null,"Usuario o contraseña"
@@ -90,12 +89,15 @@ public class VentanaPassword extends JFrame{
                 }
             }
         };
+        //agregar contador de numero de veces que da aceptar
         botAcep.addActionListener(accion);
         
         botCan=new JButton();
         botCan.setText("CANCELAR");
         botCan.setBounds(150,135,100,20);
         panel1.add(botCan);
+        // hacer que se borre todo al clikear cancelar
+        
     }
     public static void main(String[]args){
         VentanaPassword call = new VentanaPassword();
