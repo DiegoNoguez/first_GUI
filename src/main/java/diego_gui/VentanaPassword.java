@@ -86,12 +86,19 @@ public class VentanaPassword extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 if(usuario.equals(cajonus.getText())&&password.equals(cajonPass.getText())){
                     JOptionPane.showMessageDialog(null,"Iniciando Sesíon");
-                    
+                    ventana1.dispose();
                     secondVen();
                 }else{
                     JOptionPane.showMessageDialog(null,"Usuario o contraseña"
                             + " incorrectos");
                     JOptionPane.showMessageDialog(null,"Verifica por favor");
+                    cajonus.setText(null);
+                    cajonPass.setText(null);
+                    if(contador==3){
+                        ventana1.dispose();
+                    }else{
+                        contador+=1;
+                    }
                 }
             }
         };
@@ -116,7 +123,9 @@ public class VentanaPassword extends JFrame{
         ventana2=new JFrame();
         ventana2.setVisible(true);
         ventana2.setLocationRelativeTo(null);
-        ventana2.setSize(300,300);
+        ventana2.setSize(450,380);
+        ventana2.setTitle("Organizador/agenda");
+        ventana2.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     
     public static void main(String[]args){
