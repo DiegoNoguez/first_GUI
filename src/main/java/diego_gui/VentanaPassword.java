@@ -12,26 +12,26 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 public class VentanaPassword extends JFrame{
-    private JPanel panel1;
+    private JPanel panel1,panel2;
     private JLabel titulo,us,pas;
     private JTextField cajonus;
     private JButton botAcep, botCan;
     private JPasswordField cajonPass;
-    private String usuario="Diego",password="12345";
+    private String usuario="Diego",password="615lopez278";
     public ActionListener accion,cancel;
     private JFrame ventana1,ventana2;
     private byte contador;
     public  VentanaPassword(){
         ventana1=new JFrame();
+        lienzo();
         ventana1.setVisible(true);
         ventana1.setSize(310,220);
         ventana1.setTitle("LOGIN");
         ventana1.setLocationRelativeTo(null);
         ventana1.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        componentes();
+        ventana1.add(panel1);
     }
     private void componentes(){
-        lienzo();
         encabezados();
         cajones();
         botones();
@@ -40,8 +40,7 @@ public class VentanaPassword extends JFrame{
         panel1=new JPanel();
         panel1.setBackground(Color.DARK_GRAY);
         getContentPane().add(panel1);
-        ventana1.add(panel1);
-        
+        componentes();
     } 
     private void encabezados(){
         titulo=new JLabel();
@@ -82,15 +81,15 @@ public class VentanaPassword extends JFrame{
         botAcep.setBounds(50,135,90,20);
         panel1.add(botAcep);
         contador=0;
-        //agregacion de eventos al boton
+        //agregacion de eventos al boton de aeptar y contador de errores
         accion=new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(usuario.equals(cajonus.getText())&&password.equals(cajonPass.getText())){
                     JOptionPane.showMessageDialog(null,"Iniciando Sesíon");
                     ventana1.dispose();
-                    secondVen();
-                }else{
+                    VentanaHorario llamada =new VentanaHorario();
+                }else{//esta es una clase anonima ya que esta destro de un metodo
                     JOptionPane.showMessageDialog(null,"Usuario o contraseña"
                             + " incorrectos");
                     JOptionPane.showMessageDialog(null,"Verifica por favor");
@@ -104,7 +103,6 @@ public class VentanaPassword extends JFrame{
                 }
             }
         };
-        //agregar contador de numero de veces que da aceptar
         botAcep.addActionListener(accion);
         //boton cancelar
         botCan=new JButton();
@@ -121,17 +119,8 @@ public class VentanaPassword extends JFrame{
         };
         botCan.addActionListener(cancel);
     }
-    private void secondVen(){
-        ventana2=new JFrame();
-        ventana2.setVisible(true);
-        ventana2.setLocationRelativeTo(null);
-        ventana2.setSize(450,380);
-        ventana2.setTitle("Organizador/agenda");
-        ventana2.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
     
     public static void main(String[]args){
         VentanaPassword call = new VentanaPassword();
-        
     }
 }
