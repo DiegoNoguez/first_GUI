@@ -1,16 +1,21 @@
 package diego_gui;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.ActiveEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 public class VentanaPassword extends JFrame{
     private JPanel panel1;
     private JLabel titulo,us,pas;
     private JTextField cajonus,cajonPass;
     private JButton botAcep, botCan;
+    private String usuario="Diego",cajon1,password="12345",pass;
     public  VentanaPassword(){
         this.setVisible(true);
         this.setSize(310,220);
@@ -58,10 +63,13 @@ public class VentanaPassword extends JFrame{
         cajonus=new JTextField();
         cajonus.setBounds(115,60,150,20);
         cajonus.setBackground(Color.WHITE);
+        cajon1=cajonus.getText();
         panel1.add(cajonus);
+        
         cajonPass=new JTextField();
         cajonPass.setBounds(115,90,150,20);
         cajonPass.setBackground(Color.WHITE);
+        pass=cajonPass.getText();
         panel1.add(cajonPass);
     }
     private void botones(){
@@ -69,6 +77,20 @@ public class VentanaPassword extends JFrame{
         botAcep.setText("ACEPTAR");
         botAcep.setBounds(50,135,90,20);
         panel1.add(botAcep);
+        //agregacion de eventos al boton
+        ActionListener accion=new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(cajon1==usuario &&pass==password){
+                    JOptionPane.showMessageDialog(null,"Iniciando Sesíon");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Usuario o contraseña"
+                            + " incorrectos");
+                    JOptionPane.showMessageDialog(null,"Verifica por favor");
+                }
+            }
+        };
+        botAcep.addActionListener(accion);
         
         botCan=new JButton();
         botCan.setText("CANCELAR");
