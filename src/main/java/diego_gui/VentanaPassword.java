@@ -16,6 +16,7 @@ public class VentanaPassword extends JFrame{
     private JTextField cajonus,cajonPass;
     private JButton botAcep, botCan;
     private String usuario="Diego",password="12345";
+    public ActionListener accion,cancel;
     private byte contador;
     public  VentanaPassword(){
         this.setVisible(true);
@@ -77,7 +78,7 @@ public class VentanaPassword extends JFrame{
         panel1.add(botAcep);
         contador=0;
         //agregacion de eventos al boton
-        ActionListener accion=new ActionListener() {
+        accion=new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(usuario.equals(cajonus.getText())&&password.equals(cajonPass.getText())){
@@ -97,8 +98,8 @@ public class VentanaPassword extends JFrame{
         botCan.setBounds(150,135,100,20);
         panel1.add(botCan);
         // hacer que se borre todo al clikear cancelar
-        
     }
+    
     public static void main(String[]args){
         VentanaPassword call = new VentanaPassword();
         
