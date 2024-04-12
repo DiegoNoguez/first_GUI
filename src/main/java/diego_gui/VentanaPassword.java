@@ -17,13 +17,15 @@ public class VentanaPassword extends JFrame{
     private JButton botAcep, botCan;
     private String usuario="Diego",password="12345";
     public ActionListener accion,cancel;
+    private JFrame ventana1,ventana2;
     private byte contador;
     public  VentanaPassword(){
-        this.setVisible(true);
-        this.setSize(310,220);
-        this.setTitle("LOGIN");
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        ventana1=new JFrame();
+        ventana1.setVisible(true);
+        ventana1.setSize(310,220);
+        ventana1.setTitle("LOGIN");
+        ventana1.setLocationRelativeTo(null);
+        ventana1.setDefaultCloseOperation(EXIT_ON_CLOSE);
         componentes();
     }
     private void componentes(){
@@ -36,6 +38,7 @@ public class VentanaPassword extends JFrame{
         panel1=new JPanel();
         panel1.setBackground(Color.DARK_GRAY);
         getContentPane().add(panel1);
+        ventana1.add(panel1);
         
     } 
     private void encabezados(){
@@ -83,6 +86,8 @@ public class VentanaPassword extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 if(usuario.equals(cajonus.getText())&&password.equals(cajonPass.getText())){
                     JOptionPane.showMessageDialog(null,"Iniciando Sesíon");
+                    
+                    secondVen();
                 }else{
                     JOptionPane.showMessageDialog(null,"Usuario o contraseña"
                             + " incorrectos");
@@ -106,6 +111,12 @@ public class VentanaPassword extends JFrame{
             }
         };
         botCan.addActionListener(cancel);
+    }
+    private void secondVen(){
+        ventana2=new JFrame();
+        ventana2.setVisible(true);
+        ventana2.setLocationRelativeTo(null);
+        ventana2.setSize(300,300);
     }
     
     public static void main(String[]args){
