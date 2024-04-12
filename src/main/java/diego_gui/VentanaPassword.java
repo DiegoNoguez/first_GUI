@@ -92,12 +92,20 @@ public class VentanaPassword extends JFrame{
         };
         //agregar contador de numero de veces que da aceptar
         botAcep.addActionListener(accion);
-        
+        //boton cancelar
         botCan=new JButton();
         botCan.setText("CANCELAR");
         botCan.setBounds(150,135,100,20);
         panel1.add(botCan);
         // hacer que se borre todo al clikear cancelar
+        cancel=new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                cajonus.setText(null);
+                cajonPass.setText(null);
+            }
+        };
+        botCan.addActionListener(cancel);
     }
     
     public static void main(String[]args){
