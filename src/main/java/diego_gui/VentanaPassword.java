@@ -86,18 +86,18 @@ public class VentanaPassword extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(usuario.equals(cajonus.getText())&&password.equals(cajonPass.getText())){
-                    JOptionPane.showMessageDialog(null,"Iniciando Sesíon");
+                    JOptionPane.showMessageDialog(null,"INICIANDO SESION");
                     ventana1.dispose();
                     VentanaHorario llamada =new VentanaHorario();
                 }else{//esta es una clase anonima ya que esta destro de un metodo
-                    JOptionPane.showMessageDialog(null,"Usuario o contraseña"
-                            + " incorrectos");
-                    JOptionPane.showMessageDialog(null,"Verifica por favor");
+                    JOptionPane.showMessageDialog(null,"USUARIO O CONTRASEÑA"
+                            + " INCORRECTOS");
                     cajonus.setText(null);
                     cajonPass.setText(null);
                     if(contador==3){
                         ventana1.dispose();
                     }else{
+                        JOptionPane.showMessageDialog(null,"Verifica por favor");
                         contador+=1;
                     }
                 }
