@@ -14,23 +14,24 @@ import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
+import static javax.swing.SwingUtilities.updateComponentTreeUI;
 public class VentanaHorario extends JFrame {
     private ImageIcon creed,mast;
     private JTextField gru;
     private JFrame agenda;
-    private JLabel bienvenida,titulo,enca,horario,pruebas,pru;
+    private JLabel bienvenida,titulo,enca,horario,act,pruebas,pru;
     private String horas[]={"7:00","8:00","9:00","10:00","11:00","12:00","13:00",
     "14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"};
     private JPanel lienzo,d1,d2,d3,d4,d5,d6,d7;
     private JComboBox hora=new JComboBox(horas);
-    private ActionListener adar;
+    private ActionListener adar,clean,cleanActi;
     private JTabbedPane general;
     private JLabel mon=new JLabel("Actividad");
     private JLabel time=new JLabel("Hora");
     private JButton agregar=new JButton("Agregar");
     private JButton limpiar=new JButton("Limpiar");
-    private JButton siguiente=new JButton("Siguiente Pestaña");
-    private byte i,j,l;
+    private JButton borrar=new JButton("Borrar Actividad");
+    private byte i;
     private short eje_y;
     public VentanaHorario(){
         panel();
@@ -54,7 +55,21 @@ public class VentanaHorario extends JFrame {
         d1=new JPanel();
         d1.setLayout(null);
         lunes();
-    
+        d2=new JPanel();
+        d2.setLayout(null);
+        d2.setBackground(Color.PINK);
+        d3=new JPanel();
+        d3.setLayout(null);
+        d4=new JPanel();
+        d4.setLayout(null);
+        d4.setBackground(Color.PINK);
+        d5=new JPanel();
+        d5.setLayout(null);
+        d6=new JPanel();
+        d6.setLayout(null);
+        d6.setBackground(Color.PINK);
+        d7=new JPanel();
+        d7.setLayout(null);
         general=new JTabbedPane();
         general.setBounds(7,114,750,710);
         general.setBackground(Color.cyan);
@@ -78,6 +93,8 @@ public class VentanaHorario extends JFrame {
         }
     }
     private void lunes(){
+        impresionHorario();
+        accionBotonesd1();
         mon.setBounds(12,8,90,30);
         mon.setFont(new Font("Arial",Font.CENTER_BASELINE,14));
         d1.add(mon);
@@ -89,13 +106,12 @@ public class VentanaHorario extends JFrame {
         d1.add(gru);
         hora.setBounds(240,40,60,30);
         d1.add(hora);
-        impresionHorario();
         agregar.setBounds(320,40,80,30);
         d1.add(agregar);
         limpiar.setBounds(410,40,95,30);
         d1.add(limpiar);
-        siguiente.setBounds(495,40,110,30);
-        d1.add(siguiente);
+        borrar.setBounds(520,90,210,30);
+        d1.add(borrar);
     }
     private void etiquetas(){
         titulo=new JLabel("HORARIO");
@@ -115,26 +131,6 @@ public class VentanaHorario extends JFrame {
         enca.setBounds(10,90,700,30);
         lienzo.add(enca);
     }
-    /*private void boton(){
-        agregar=new JButton("AGREGAR");
-        agregar.setBounds(450,150,99,30);
-        lienzo.add(agregar);
-        adar=new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            }
-        };
-        agregar.addActionListener(adar);
-        
-        limpiar=new JButton("LIMPIAR");
-        limpiar.setBounds(550,150,95,30);
-        lienzo.add(limpiar);
-        guardar=new JButton("GUARDAR");
-        guardar.setBounds(650,150,96,30);
-        lienzo.add(guardar);
-        
-    }*/
     private void imagenes(){
         creed=new ImageIcon("creediv.png");
         JLabel con =new JLabel();
@@ -148,5 +144,156 @@ public class VentanaHorario extends JFrame {
         contenedor.setIcon(new ImageIcon(mast.getImage().getScaledInstance(250,90,Image.SCALE_SMOOTH)));
         lienzo.add(contenedor);
     }
-    private void accionBotones(){}
+    private void accionBotonesd1(){
+        adar=new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                act=new JLabel();
+                String opcion;
+                opcion=(String) hora.getSelectedItem();
+                switch(opcion){
+                    case "7:00"->{
+                        act.setBounds(60,90,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "8:00"->{
+                        act.setBounds(60,120,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "9:00"->{
+                        act.setBounds(60,150,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "10:00"->{
+                        act.setBounds(60,180,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "11:00"->{
+                        act.setBounds(60,210,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "12:00"->{
+                        act.setBounds(60,240,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "13:00"->{
+                        act.setBounds(60,270,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "14:00"->{
+                        act.setBounds(60,300,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "15:00"->{
+                        act.setBounds(60,330,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "16:00"->{
+                        act.setBounds(60,360,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "17:00"->{
+                        act.setBounds(60,390,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "18:00"->{
+                        act.setBounds(60,420,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "19:00"->{
+                        act.setBounds(60,450,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "20:00"->{
+                        act.setBounds(60,480,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                    case "21:00"->{
+                        act.setBounds(60,510,300,20);
+                        act.setText(gru.getText());
+                        d1.add(act);
+                    }
+                }
+                updateComponentTreeUI(agenda);
+            } 
+        };
+        agregar.addActionListener(adar);
+        clean=new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gru.setText(null);
+            }  
+        };
+        limpiar.addActionListener(clean);
+        cleanActi=new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String opcion;
+                opcion=(String) hora.getSelectedItem();
+                switch(opcion){
+                    case "7:00"->{
+                        act.setText(null);
+                    }
+                    case "8:00"->{
+                        act.setText(null);
+                    }
+                    case "9:00"->{
+                        act.setText(null);
+                    }
+                    case "10:00"->{
+                        act.setText(null);
+                    }
+                    case "11:00"->{
+                        act.setText(null);
+                    }
+                    case "12:00"->{
+                        act.setText(null);
+                    }
+                    case "13:00"->{
+                        act.setText(null);
+                    }
+                    case "14:00"->{
+                        act.setText(null);
+                    }
+                    case "15:00"->{
+                        act.setText(null);
+                    }
+                    case "16:00"->{
+                        act.setText(null);
+                    }
+                    case "17:00"->{
+                        act.setText(null);
+                    }
+                    case "18:00"->{
+                        act.setText(null);
+                    }
+                    case "19:00"->{
+                        act.setText(null);
+                    }
+                    case "20:00"->{
+                        act.setText(null);
+                    }
+                    case "21:00"->{
+                        act.setText(null);
+                    }
+                }
+            }
+        };
+        borrar.addActionListener(cleanActi);
+        
+    }
 }
