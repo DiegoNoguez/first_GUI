@@ -60,7 +60,7 @@ public class VentanaHorario extends JFrame {
         panel();
         agenda =new JFrame("AGENDA");
         agenda.setVisible(true);
-        agenda.setSize(825,710);
+        agenda.setSize(900,710);
         agenda.setDefaultCloseOperation(EXIT_ON_CLOSE);
         agenda.add(lienzo);
     }
@@ -69,10 +69,29 @@ public class VentanaHorario extends JFrame {
         subpaneles();
         etiquetas();
         imagenes();
+        botonesAdita();
         lienzo.setLayout(null);
         lienzo.setBackground(Color.orange);
         getContentPane().add(lienzo);
         lienzo.add(general);
+    }
+    private void botonesAdita(){
+        JButton bControl=new JButton();
+        bControl.setBounds(760,150,100,40);
+        bControl.setText("Gastos");
+        lienzo.add(bControl);
+        
+        //creacion del boton de notas rapidas
+        JButton bnotes=new JButton();
+        bnotes.setBounds(760,350,100,40);
+        bnotes.setText("Notas");
+        lienzo.add(bnotes);
+        
+        //Boton de estado de animo
+        JButton banimo=new JButton();
+        banimo.setText("Estado Animo");
+        banimo.setBounds(760,550,120,40);
+        lienzo.add(banimo);
     }
     private void subpaneles(){
         d1=new JPanel();
