@@ -44,6 +44,7 @@ public class VentanaHorario extends JFrame {
     private ActionListener adar,clean,cleanActi,ad2,cl2,clA2,ad3,ad4,ad5,ad6,ad7;
     private ActionListener cl3,cl4,cl5,cl6,cl7;
     private ActionListener cla3,cla4,cla5,cla6,cla7;
+    private ActionListener ga,no,hum;
     //LABELS Y BOTONES
     private JLabel mon=new JLabel("Actividad");
     private JLabel time=new JLabel("Hora");
@@ -79,6 +80,13 @@ public class VentanaHorario extends JFrame {
         JButton bControl=new JButton();
         bControl.setBounds(760,150,100,40);
         bControl.setText("Gastos");
+        ga =new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AditamentosH lic=new AditamentosH();
+            }
+        };
+        bControl.addActionListener(ga);
         lienzo.add(bControl);
         
         //creacion del boton de notas rapidas
