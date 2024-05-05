@@ -93,12 +93,26 @@ public class VentanaHorario extends JFrame {
         JButton bnotes=new JButton();
         bnotes.setBounds(760,350,100,40);
         bnotes.setText("Notas");
+        no =new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NotasPensa ob =new NotasPensa();
+            }
+        };
+        bnotes.addActionListener(no);
         lienzo.add(bnotes);
         
         //Boton de estado de animo
         JButton banimo=new JButton();
         banimo.setText("Estado Animo");
         banimo.setBounds(760,550,120,40);
+        hum=new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Humor on=new Humor();
+            }
+        };
+        banimo.addActionListener(hum);
         lienzo.add(banimo);
     }
     private void subpaneles(){

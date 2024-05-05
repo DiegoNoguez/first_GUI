@@ -15,14 +15,13 @@ public class AditamentosH extends VentanaHorario implements Componentes, OpeBas,
     private JTextField ca1,ca2,result;
     private JLabel titulo,can1,can2;
     private JButton cerrar;
-    private ActionListener close;
-    private byte j;
+    private ActionListener close,re;
+    private int r;
     public AditamentosH(){
         tVent();
     }
     @Override
-    public void areaste() {
-        
+    public void areaste() {  
     }
     @Override
     public void tetiquet() {
@@ -32,7 +31,7 @@ public class AditamentosH extends VentanaHorario implements Componentes, OpeBas,
         titulo.setForeground(Color.WHITE);
         p.add(titulo);
         
-        can1=new JLabel("Monto");
+        can1=new JLabel("Ingreso");
         can1.setBounds(4,40,97,30);
         can1.setFont(new Font("Arial Black",Font.BOLD,16));
         can1.setForeground(Color.WHITE);
@@ -53,12 +52,15 @@ public class AditamentosH extends VentanaHorario implements Componentes, OpeBas,
 
     @Override
     public void suma() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public void resta() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        short n1,n2;
+        n1=Short.parseShort(ca1.getText());
+        n2=Short.parseShort(ca2.getText());
+        r=n1-n2;
     }
 
     @Override
@@ -76,7 +78,7 @@ public class AditamentosH extends VentanaHorario implements Componentes, OpeBas,
         tPan();
         ventana=new JFrame();
         ventana.setVisible(true);
-        ventana.setSize(480,460);
+        ventana.setSize(480,400);
         ventana.setLocation(310, 45);
         ventana.add(p);
     }
@@ -106,7 +108,7 @@ public class AditamentosH extends VentanaHorario implements Componentes, OpeBas,
     public void botones() {
         cerrar=new JButton();
         cerrar.setText("Cerrar");
-        cerrar.setBounds(320,345,100,20);
+        cerrar.setBounds(320,300,100,20);
         close=new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,6 +117,27 @@ public class AditamentosH extends VentanaHorario implements Componentes, OpeBas,
         };
         cerrar.addActionListener(close);
         p.add(cerrar);
+        
+        JButton restar =new JButton();
+        restar.setText("RESTAR");
+        restar.setBounds(100,290,100,30);
+        re=new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                resta();
+                JLabel resultado=new JLabel();
+                resultado.setText("Lo que te resta es "+r);
+                resultado.setFont(new Font("Arial Black",Font.CENTER_BASELINE,18));
+                resultado.setBounds(100,150,250,30);
+                resultado.setForeground(Color.WHITE);
+                p.add(resultado);
+                p.repaint();
+                p.revalidate();
+            }
+        };
+        restar.addActionListener(re);
+        p.add(restar);
+        
     }
 
 }
